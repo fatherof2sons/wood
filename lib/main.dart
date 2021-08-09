@@ -50,26 +50,41 @@ class _HomePageState extends State<HomePage>
         drawerItems: _buildItems(context),
         child: SafeArea(
           child: Scaffold(
+            backgroundColor: Colors.white,
             appBar: AppBar(
               elevation: 0.0,
-              backgroundColor: Colors.white70,
+              backgroundColor: Colors.white,
               centerTitle: true,
-              title: Text(
-                "The Wood",
-                style: TextStyle(
-                  fontFamily: "Bowlby One SC",
-                  fontSize: 22.0,
-                  color: Colors.black87,
-                ),
-              ),
-              leading: IconButton(
+              title: IconButton(
                 icon: Icon(
                   Icons.menu,
                   color: Colors.black,
+                  size: 30.0,
                 ),
                 onPressed: () {
                   _controller.toggle();
                 },
+              ),
+            ),
+            body: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  alignment: Alignment.bottomCenter,
+                  image: AssetImage("images/wood_art.jpg"),
+                ),
+              ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 60.0),
+                  child: Text(
+                    "The Wood",
+                    style: TextStyle(
+                      fontFamily: "Bowlby One SC",
+                      fontSize: 62.0,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
