@@ -70,6 +70,21 @@ flutter:
     - family: Abel
       fonts:
         - asset: fonts/Abel-Regular.ttf
+    - family: Grenze Gotisch
+      fonts:
+        - asset: fonts/GrenzeGotisch-Bold.ttf
+    - family: Megrim
+      fonts:
+        - asset: fonts/Megrim-Regular.ttf
+    - family: New Rocker
+      fonts:
+        - asset: fonts/NewRocker-Regular.ttf
+    - family: Cinzel Decorative
+      fonts:
+        - asset: fonts/CinzelDecorative-Regular.ttf
+        - asset: fonts/CinzelDecorative-Black.ttf
+        - asset: fonts/CinzelDecorative-Bold.ttf
+        
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
