@@ -6,9 +6,10 @@ class ContactPageMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
-        child: Text("Contact"),
-      ),
-    );
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Text("Contact")],
+        ));
   }
 }

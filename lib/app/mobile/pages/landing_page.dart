@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wood/app/mobile/pages/about_page.dart';
 import 'package:wood/app/mobile/pages/contact_page.dart';
 import 'package:wood/app/mobile/pages/home_page.dart';
-import 'package:wood/app/mobile/pages/social_page.dart';
+// import 'package:wood/app/mobile/pages/social_page.dart';
 import 'package:wood/app/widgets/link.dart';
 
 enum OnPage { home, about, contact, social }
@@ -19,6 +19,7 @@ class LandingPageMobile extends StatefulWidget {
 class _LandingPageMobileState extends State<LandingPageMobile>
     with SingleTickerProviderStateMixin {
   late FancyDrawerController _controller;
+  final _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -38,10 +39,10 @@ class _LandingPageMobileState extends State<LandingPageMobile>
   //             ? FontAwesomeIcons.mailBulk
   //             : FontAwesomeIcons.connectdevelop;
 
-  void _pageState(OnPage onPage) {
-    setState(() => _onPage = onPage);
-    _controller.close();
-  }
+  // void _pageState(OnPage onPage) {
+  //   setState(() => _onPage = onPage);
+  //   _controller.close();
+  // }
 
   @override
   void dispose() {
@@ -49,7 +50,7 @@ class _LandingPageMobileState extends State<LandingPageMobile>
     super.dispose();
   }
 
-  OnPage _onPage = OnPage.home;
+  // OnPage _onPage = OnPage.home;
 
   @override
   Widget build(BuildContext context) {
@@ -74,19 +75,38 @@ class _LandingPageMobileState extends State<LandingPageMobile>
                 onPressed: () => _controller.toggle(),
               ),
             ),
-            body: _buildContent(),
+            body: SingleChildScrollView(
+              controller: _scrollController,
+              child: _scrollingPage(),
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildContent() {
-    if (_onPage == OnPage.home) return HomePageMobile();
-    if (_onPage == OnPage.about) return AboutPageMobile();
-    if (_onPage == OnPage.contact) return ContactPageMobile();
+  Widget _scrollingPage() {
+    return Column(
+      children: [
+        HomePageMobile(),
+        AboutPageMobile(),
+        ContactPageMobile(),
+      ],
+    );
+  }
 
-    return SocialPageMobile();
+  // Widget _buildContent() {
+  //   if (_onPage == OnPage.home) return HomePageMobile();
+  //   if (_onPage == OnPage.about) return AboutPageMobile();
+  //   if (_onPage == OnPage.contact) return ContactPageMobile();
+
+  //   return SocialPageMobile();
+  // }
+
+  void _onTap(double offset) {
+    _scrollController.animateTo(offset,
+        duration: Duration(milliseconds: 600), curve: Curves.bounceInOut);
+    _controller.close();
   }
 
   List<Widget> _buildItems(BuildContext context) {
@@ -94,15 +114,15 @@ class _LandingPageMobileState extends State<LandingPageMobile>
     final double iconSpacing = 16.0;
     final double iconSize = 30.0;
     return [
-      Links("Home", () => _pageState(OnPage.home)),
+      Links("Home", () => _onTap(0.0)),
       Links(
         "About",
-        () => _pageState(OnPage.about),
+        () => _onTap(830.0),
         leftPadding: 77.0,
       ),
       Links(
         "Contact",
-        () => _pageState(OnPage.contact),
+        () => _onTap(2000.0),
         leftPadding: 65.0,
       ),
       SizedBox(height: 50.0),

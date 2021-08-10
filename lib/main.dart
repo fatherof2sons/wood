@@ -1,4 +1,3 @@
-import 'package:fancy_drawer/fancy_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:wood/app/mobile/pages/landing_page.dart';
 

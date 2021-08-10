@@ -12,24 +12,24 @@ class HomePageMobile extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          alignment: Alignment.bottomCenter,
-          fit: BoxFit.fitWidth,
-          image: AssetImage("images/wood_art.jpg"),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(top: 60.0),
+      // decoration: BoxDecoration(
+      //   image: DecorationImage(
+      //     alignment: Alignment.bottomCenter,
+      //     image: AssetImage("images/wood_art.jpg"),
+      //   ),
+      // ),
+      child: Center(
         child: Text(
           "The Wood",
           textAlign: TextAlign.center,
           style: TextStyle(
             fontFamily: font,
-            fontSize: 32.0,
-            color: Colors.black87,
+            fontSize: 80.0,
+            color: Colors.grey.shade900,
             fontWeight: FontWeight.bold,
-            // decoration: TextDecoration.underline,
+            // decoration: TextDecoration.overline,
+            // decorationStyle: TextDecorationStyle.wavy,
+            // decorationThickness: 0.1,
           ),
         ),
       ),
