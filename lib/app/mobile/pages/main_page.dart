@@ -53,9 +53,9 @@ class _MainPageState extends State<MainPage> {
               AzeenImage(),
               ZahilImage(),
               ChippeImage(),
-              LinkOne(),
-              PageIndicator(),
-              Links(),
+              // LinkOne(),
+              // PageIndicator(),
+              // Links(),
             ],
           ),
         ),
@@ -216,7 +216,7 @@ class HambeImage extends StatelessWidget {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Positioned(
         bottom: 0.0,
-        left: -0.75 * notifier.offset + 30,
+        left: -1.05 * notifier.offset + 30,
         width: MediaQuery.of(context).size.width * 0.6,
         child: child!,
       ),
@@ -237,7 +237,7 @@ class ZahilImage extends StatelessWidget {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Positioned(
         bottom: -20.0,
-        left: -0.85 * notifier.offset + 340,
+        left: -0.85 * notifier.offset + 320,
         width: MediaQuery.of(context).size.width * 0.9,
         child: child!,
       ),
@@ -258,8 +258,8 @@ class AzeenImage extends StatelessWidget {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Positioned(
         bottom: 0.0,
-        left: -0.85 * notifier.offset + 560,
-        width: MediaQuery.of(context).size.width * 0.4,
+        left: -0.85 * notifier.offset + 550,
+        width: MediaQuery.of(context).size.width * 0.5,
         child: child!,
       ),
       child: IgnorePointer(
@@ -279,7 +279,7 @@ class ChippeImage extends StatelessWidget {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Positioned(
         bottom: -150.0,
-        left: -0.95 * notifier.offset + 280,
+        left: -0.95 * notifier.offset + 250,
         width: MediaQuery.of(context).size.width * 1.2,
         child: child!,
       ),
@@ -300,7 +300,7 @@ class MoImage extends StatelessWidget {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Positioned(
         bottom: -30.0,
-        left: -0.99 * notifier.offset - 70,
+        left: -1.0 * notifier.offset - 77,
         width: MediaQuery.of(context).size.width * 1.6,
         child: child!,
       ),
@@ -318,28 +318,28 @@ class Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Transform.translate(
-        offset: Offset(-29 - 0.4 * notifier.offset, 0),
+        offset: Offset(-20 - 0.4 * notifier.offset, 0),
         child: child!,
       ),
       child: SizedBox(
-        width: 200.0,
+        width: MediaQuery.of(context).size.width / 3,
         child: FittedBox(
           fit: BoxFit.cover,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "The",
-                style: TextStyle(
-                  fontFamily: "Megrim",
-                  color: Colors.white60,
-                  fontSize: 3.0,
-                  fontWeight: FontWeight.bold,
+          child: RotatedBox(
+            quarterTurns: 1,
+            child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "The",
+                  style: TextStyle(
+                    fontFamily: "Megrim",
+                    color: Colors.white60,
+                    fontSize: 3.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              RotatedBox(
-                quarterTurns: 1,
-                child: Text(
+                Text(
                   "Wood",
                   style: TextStyle(
                     fontFamily: "New Rocker",
@@ -348,8 +348,8 @@ class Title extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
