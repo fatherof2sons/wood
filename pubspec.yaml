@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   fancy_drawer: ^2.0.0
   font_awesome_flutter: ^9.1.0
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +51,15 @@ flutter:
   assets:
     - images/wood_art.jpg
     - images/about_art.jpeg
+    - images/angel_art.png
+    - images/leaf_art.jpg
+    - images/band.jpg
+    - images/hambe.png
+    - images/zahil.png
+    - images/ammadey.png
+    - images/azeen.png
+    - images/chippe.png
+    - images/mo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
