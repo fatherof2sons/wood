@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'dart:ui';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../styles.dart';
@@ -32,7 +34,7 @@ class _MainPageState extends State<MainPage> {
                   Page2(),
                 ],
               ),
-              BackFrame(),
+              // BackFrame(),
               AmmadeyImage(),
               HambeImage(),
               MoImage(),
@@ -67,26 +69,6 @@ class BackFrame extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class Links extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<PageOffset>(
-      builder: (context, notifier, child) => Positioned(
-        bottom: 205.0,
-        left: 16.0 + MediaQuery.of(context).size.width - notifier.offset,
-        child: Opacity(
-          opacity: 0.5,
-          child: child!,
-        ),
-      ),
-      child: Text(
-        "Life is Animation",
-        style: TextStyle(fontSize: 16.0),
       ),
     );
   }
@@ -132,28 +114,6 @@ class PageIndicator extends StatelessWidget {
   }
 }
 
-class LinkOne extends StatelessWidget {
-  const LinkOne({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<PageOffset>(
-      builder: (context, notifier, child) => Positioned(
-        top: 45.0,
-        left: -0.2 * -notifier.offset + 800,
-        child: Text(
-          "About",
-          style: TextStyle(
-            fontFamily: "New Rocker",
-            color: Colors.white,
-            fontSize: 40.0,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class Page1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -170,7 +130,94 @@ class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
+      // alignment: Alignment.topRight,
       color: Colors.grey.shade900,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SocialMediaIcons(),
+          SizedBox(height: 30.0),
+          LinkNav(),
+        ],
+      ),
+    );
+  }
+}
+
+class LinkNav extends StatelessWidget {
+  const LinkNav({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      // mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      // crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Linker("The Band"),
+        SizedBox(width: 20.0),
+        Linker("Members"),
+        SizedBox(width: 20.0),
+        Linker("Contact"),
+      ],
+    );
+  }
+}
+
+class Linker extends StatelessWidget {
+  const Linker(this.name);
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      name,
+      style: TextStyle(
+        fontFamily: "Megrim",
+        fontSize: 18.0,
+        fontWeight: FontWeight.bold,
+        color: Colors.white60,
+      ),
+    );
+  }
+}
+
+class SocialMediaIcons extends StatelessWidget {
+  const SocialMediaIcons({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Color color = Colors.white60;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          FontAwesomeIcons.facebook,
+          color: color,
+        ),
+        SizedBox(width: 16.0),
+        Icon(
+          FontAwesomeIcons.facebookMessenger,
+          color: color,
+        ),
+        SizedBox(width: 16.0),
+        Icon(
+          FontAwesomeIcons.instagram,
+          color: color,
+        ),
+        SizedBox(width: 16.0),
+        Icon(
+          FontAwesomeIcons.youtube,
+          color: color,
+        ),
+        SizedBox(width: 16.0),
+        Icon(
+          FontAwesomeIcons.twitter,
+          color: color,
+        ),
+      ],
     );
   }
 }
@@ -223,7 +270,7 @@ class HambeImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Positioned(
-        bottom: 0.0,
+        bottom: -20.0,
         left: -1.05 * notifier.offset + 30,
         width: MediaQuery.of(context).size.width * 0.6,
         child: child!,
@@ -245,7 +292,7 @@ class ZahilImage extends StatelessWidget {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Positioned(
         bottom: -20.0,
-        left: -0.85 * notifier.offset + 320,
+        left: -0.85 * notifier.offset + 280,
         width: MediaQuery.of(context).size.width * 0.9,
         child: child!,
       ),
@@ -265,8 +312,8 @@ class AzeenImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Positioned(
-        bottom: 0.0,
-        left: -0.85 * notifier.offset + 550,
+        bottom: -20.0,
+        left: -0.85 * notifier.offset + 460,
         width: MediaQuery.of(context).size.width * 0.5,
         child: child!,
       ),
@@ -287,7 +334,7 @@ class ChippeImage extends StatelessWidget {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Positioned(
         bottom: -150.0,
-        left: -0.95 * notifier.offset + 250,
+        left: -0.95 * notifier.offset + 230,
         width: MediaQuery.of(context).size.width * 1.2,
         child: child!,
       ),
@@ -308,8 +355,8 @@ class MoImage extends StatelessWidget {
     return Consumer<PageOffset>(
       builder: (context, notifier, child) => Positioned(
         bottom: -30.0,
-        left: -1.0 * notifier.offset - 77,
-        width: MediaQuery.of(context).size.width * 1.6,
+        left: -1.0 * notifier.offset - 40,
+        width: MediaQuery.of(context).size.width * 1.5,
         child: child!,
       ),
       child: IgnorePointer(
@@ -330,7 +377,7 @@ class Title extends StatelessWidget {
         child: child!,
       ),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width / 3,
+        width: MediaQuery.of(context).size.width / 2,
         child: FittedBox(
           fit: BoxFit.cover,
           child: RotatedBox(
@@ -357,42 +404,6 @@ class Title extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class BandImage extends StatelessWidget {
-  const BandImage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 20.0,
-      child: Container(
-        alignment: Alignment.bottomCenter,
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height / 3,
-        decoration: BoxDecoration(
-          // image: DecorationImage(
-          //   colorFilter: ColorFilter.srgbToLinearGamma(),
-          //   image: AssetImage("images/band.jpg"),
-          // ),
-          gradient: LinearGradient(
-              colors: [Colors.white, Colors.black],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ColorFiltered(
-            colorFilter: ColorFilter.mode(
-                Colors.white.withOpacity(0.4), BlendMode.colorBurn),
-            child: Image.asset(
-              "images/band.jpg",
             ),
           ),
         ),
