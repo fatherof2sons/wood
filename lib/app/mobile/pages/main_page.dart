@@ -214,16 +214,19 @@ class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 26.0),
+      // padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 26.0),
       // alignment: Alignment.topRight,
       color: Colors.grey.shade900,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          SocialMediaIcons(),
-          SizedBox(height: 90.0),
+          SizedBox(height: 60.0),
           LinkNav(),
+          Padding(
+            padding: const EdgeInsets.only(left: 100.0, top: 140.0),
+            child: SocialMediaIcons(),
+          ),
         ],
       ),
     );
@@ -235,14 +238,24 @@ class LinkNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
       // mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       // crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Linker("The Band"),
-        SizedBox(height: 40.0),
-        Linker("Members"),
+        InkWell(
+          onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Slide or Fade in Band Info"),
+          )),
+          child: Linker("The Band"),
+        ),
+        SizedBox(width: 40.0),
+        InkWell(
+          onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text("Slide or Fade in Band Member bio"),
+          )),
+          child: Linker("Members"),
+        ),
       ],
     );
   }
@@ -271,15 +284,16 @@ class SocialMediaIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color = Colors.white60;
+    Color color = Colors.grey.shade600;
+    double size = 22.0;
     return Column(
       children: [
         Text(
           "- Stay Connected -",
           style: TextStyle(
             fontFamily: "Megrim",
-            // decoration: TextDecoration.underline,
-            fontSize: 12.0,
+            color: color,
+            fontSize: 10.0,
             wordSpacing: 2,
             letterSpacing: 2,
           ),
@@ -288,34 +302,70 @@ class SocialMediaIcons extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              FontAwesomeIcons.facebook,
-              color: color,
+            InkWell(
+              onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Go to Facebook"),
+              )),
+              child: Icon(
+                FontAwesomeIcons.facebook,
+                color: color,
+                size: size,
+              ),
             ),
             SizedBox(width: 18.0),
-            Icon(
-              FontAwesomeIcons.facebookMessenger,
-              color: color,
+            InkWell(
+              onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Go to Messenger"),
+              )),
+              child: Icon(
+                FontAwesomeIcons.facebookMessenger,
+                color: color,
+                size: size,
+              ),
             ),
             SizedBox(width: 18.0),
-            Icon(
-              FontAwesomeIcons.instagram,
-              color: color,
+            InkWell(
+              onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Go to Instagram"),
+              )),
+              child: Icon(
+                FontAwesomeIcons.instagram,
+                color: color,
+                size: size,
+              ),
             ),
             SizedBox(width: 18.0),
-            Icon(
-              FontAwesomeIcons.youtube,
-              color: color,
+            InkWell(
+              onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Go to Youtube"),
+              )),
+              child: Icon(
+                FontAwesomeIcons.youtube,
+                color: color,
+                size: size,
+              ),
             ),
             SizedBox(width: 18.0),
-            Icon(
-              FontAwesomeIcons.twitter,
-              color: color,
+            InkWell(
+              onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Go to Twitter"),
+              )),
+              child: Icon(
+                FontAwesomeIcons.twitter,
+                color: color,
+                size: size,
+              ),
             ),
             SizedBox(width: 18.0),
-            Icon(
-              FontAwesomeIcons.google,
-              color: color,
+            InkWell(
+              onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Go to Gmail"),
+              )),
+              child: Icon(
+                FontAwesomeIcons.google,
+                color: color,
+                size: size,
+              ),
             ),
           ],
         ),
