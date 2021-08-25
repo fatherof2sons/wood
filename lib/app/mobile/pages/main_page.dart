@@ -32,31 +32,39 @@ class _MainPageState extends State<MainPage> {
                   Page2(),
                 ],
               ),
-              // Opacity(
-              //   opacity: 0.2,
-              //   child: Container(
-              //     width: MediaQuery.of(context).size.width,
-              //     height: MediaQuery.of(context).size.height / 3,
-              //     decoration: BoxDecoration(
-              //         gradient: LinearGradient(
-              //           tileMode: TileMode.clamp,
-              //           colors: [Colors.grey.shade900, Colors.black87],
-              //           begin: Alignment.topCenter,
-              //           end: Alignment.bottomCenter,
-              //         ),
-              //         backgroundBlendMode: BlendMode.colorBurn),
-              //   ),
-              // ),
+              BackFrame(),
               AmmadeyImage(),
               HambeImage(),
               MoImage(),
               AzeenImage(),
               ZahilImage(),
               ChippeImage(),
-              // LinkOne(),
-              // PageIndicator(),
-              // Links(),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class BackFrame extends StatelessWidget {
+  const BackFrame({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<PageOffset>(
+      builder: (context, notifier, child) => Positioned(
+        left: -0.75 * notifier.offset + 200.0,
+        child: Opacity(
+          opacity: 0.2,
+          child: IgnorePointer(
+            child: Container(
+              width: 300.0,
+              height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade900,
+              ),
+            ),
           ),
         ),
       ),
@@ -333,7 +341,7 @@ class Title extends StatelessWidget {
                 Text(
                   "The",
                   style: TextStyle(
-                    fontFamily: "Megrim",
+                    fontFamily: "New Rocker",
                     color: Colors.white60,
                     fontSize: 3.0,
                     fontWeight: FontWeight.bold,
@@ -396,6 +404,7 @@ class BandImage extends StatelessWidget {
 class PageOffset extends ChangeNotifier {
   double _offset = 0;
   double _page = 0;
+  bool _disposed = false;
 
   PageOffset(PageController controller) {
     controller.addListener(() {
@@ -407,4 +416,17 @@ class PageOffset extends ChangeNotifier {
 
   double get offset => _offset;
   double get page => _page;
+
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
+  }
+
+  @override
+  void notifyListeners() {
+    if (!_disposed) {
+      super.notifyListeners();
+    }
+  }
 }
